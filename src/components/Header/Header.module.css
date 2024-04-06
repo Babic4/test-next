@@ -1,0 +1,22 @@
+.header {
+	position: fixed;
+	margin-top: 1rem;
+	display: flex;
+	padding: 0.7rem 1.1rem 0.6rem;
+	background-color: rgb(58, 58, 58);
+	color: white;
+	border-radius: 0.6rem;
+}
+
+.name {
+	font-size: 0.7rem;
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+}
+
+.header nav ul {
+	display: flex;
+	gap: 0.5rem;
+	text-decoration: none;
+}
