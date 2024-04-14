@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 
-const useUserStore = create(set => ({
+const useUserStore = create((set, get) => ({
+	user: {},
 	users: [],
 	isLoading: false,
 	error: null,
@@ -11,7 +12,28 @@ const useUserStore = create(set => ({
 
 			if (response.ok) {
 				const json = await response.json()
-				set({ users: json, isLoading: false })
+				setTimeout(() => {
+					set({ users: json, isLoading: false })
+				}, 2000)
+			} else {
+				set({ error: 'Error', isLoading: false })
+			}
+		} catch {
+			set({ error: 'Error', isLoading: false })
+		}
+	},
+	fetchUser: async id => {
+		try {
+			set({ isLoading: true })
+			const response = await fetch(
+				`https://jsonplaceholder.typicode.com/users/${id}`
+			)
+
+			if (response.ok) {
+				const json = await response.json()
+				setTimeout(() => {
+					set({ user: json, isLoading: false })
+				}, 2000)
 			} else {
 				set({ error: 'Error', isLoading: false })
 			}
@@ -28,7 +50,6 @@ const useUserStore = create(set => ({
 						: { ...user, favorite: true }
 					: user
 			})
-			console.log(newDataUsers)
 			return { users: newDataUsers }
 		})
 	},

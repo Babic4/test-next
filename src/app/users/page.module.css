@@ -9,6 +9,22 @@
 	/* background-color: var(--mantine-color-pink-light-color); */
 }
 
+.header {
+	display: flex;
+	gap: 1.5rem;
+	align-items: center;
+	margin-bottom: 1.5rem;
+}
+
+.input {
+	transition: none;
+
+	&:focus-within {
+		outline: 1px solid var(--mantine-color-pink-light-color);
+		border-color: transparent;
+	}
+}
+
 .containerUsers {
 	display: flex;
 	flex-direction: column;

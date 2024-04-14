@@ -10,6 +10,7 @@ import {
 	rem,
 } from '@mantine/core'
 import { IconCheck, IconX } from '@tabler/icons-react'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import classes from './page.module.css'
 
@@ -52,6 +53,8 @@ function getStrength(password) {
 }
 
 export default function Home() {
+	const router = useRouter()
+
 	const [popoverOpened, setPopoverOpened] = useState(false)
 	const [value, setValue] = useState('')
 	const checks = requirements.map((requirement, index) => (
@@ -108,8 +111,14 @@ export default function Home() {
 							{checks}
 						</Popover.Dropdown>
 					</Popover>
-					<Button variant='light' color='pink' size='xs' radius='xl'>
-						Register
+					<Button
+						variant='light'
+						color='pink'
+						size='xs'
+						radius='xl'
+						onClick={() => router.push('users')}
+					>
+						Log in
 					</Button>
 				</form>
 			</div>

@@ -2,14 +2,19 @@
 import useUserStore from '@/store/user'
 import { ActionIcon, Avatar, Text } from '@mantine/core'
 import { IconHeart, IconHeartFilled, IconTrash } from '@tabler/icons-react'
+import { useRouter } from 'next/navigation'
 import classes from './UserCard.module.css'
 
 const UserCard = ({ user }) => {
+	const router = useRouter()
 	const deleteUser = useUserStore(state => state.deleteUser)
 	const toggleFavorites = useUserStore(state => state.toggleFavorites)
 
 	return (
-		<div className={classes.userCard}>
+		<div
+			className={classes.userCard}
+			onClick={() => router.push(`/users/${user.id}`)}
+		>
 			<div className={classes.leftContainer}>
 				<Avatar
 					variant='light'
@@ -33,7 +38,10 @@ const UserCard = ({ user }) => {
 					color={user.favorite ? 'pink' : 'gray'}
 					radius='xl'
 					aria-label='Settings'
-					onClick={() => toggleFavorites(user.id)}
+					onClick={e => {
+						e.stopPropagation()
+						toggleFavorites(user.id)
+					}}
 				>
 					{user.favorite ? (
 						<IconHeartFilled stroke={2} />
@@ -46,7 +54,10 @@ const UserCard = ({ user }) => {
 					color='red'
 					radius='xl'
 					aria-label='Settings'
-					onClick={() => deleteUser(user.id)}
+					onClick={e => {
+						e.stopPropagation()
+						deleteUser(user.id)
+					}}
 				>
 					<IconTrash stroke={2} />
 				</ActionIcon>
