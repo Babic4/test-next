@@ -7,14 +7,13 @@
 	border-radius: 0.8rem;
 	cursor: pointer;
 	border: 1px solid white;
-	transition: all 0.25s cubic-bezier(0, 0.99, 1, 0.49);
+	transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04), 0 1px 4px rgba(0, 0, 0, 0.03),
+		0 1px 2px rgba(0, 0, 0, 0.02);
 
 	&:hover {
-		/* border: 1px solid rgba(0, 0, 0, 0.4);
-		outline: 2px solid rgba(0, 0, 0, 0.2); */
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04),
-			0 1px 4px var(--mantine-color-pink-light-color),
-			0 1px 2px var(--mantine-color-pink-light-color);
+		transform: scale3d(1.02, 1.02, 1.02);
+		border-radius: 1.4rem;
 	}
 
 	.leftContainer {
